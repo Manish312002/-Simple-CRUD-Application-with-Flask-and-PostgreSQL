@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<form method="post">
+    {{ form.hidden_tag() }}
+    <div class="container d-flex justify-content-center">
+        <b>{{ form.submit(class="px-5 my-2 btn btn-primary") }}</b>
+    </div>
+</form>
+
+<div class="container">
+    <table class="table d-flex justify-content-center table table-hover table-bordered"> 
+            <tr class="table-info">
+                <th class="px-5">STD_ID</th>
+                <th class="px-5">First Name</th>
+                <th class="px-5">Last Name</th>
+                <th class="px-5">Class</th>
+                <th class="px-5">Date</th>
+                <th ></th>
+                <th ></th>
+            </tr>
+            {% for dt in data %}
+            <tr class="table-light">
+                <th class="px-5">{{ dt[0] }}</th>
+                <th class="px-5">{{ dt[1] }}</th>
+                <th class="px-5">{{ dt[2] }}</th>
+                <th class="px-5">{{ dt[3] }}</th>
+                <th class="px-5">{{ dt[4] }}</th>
+                <th >
+                    <form action="/Updata_Data" method="post"> 
+                        <input type="hidden" name="id" value="{{ dt[0] }}"> 
+                        <button class="btn btn-outline-warning" >Edit</button>
+                    </form>
+                </th>
+                <th >
+                    <form action="/delete" method="post"> 
+                        <input type="hidden" name="id" value="{{ dt[0] }}"> 
+                        <button class="btn btn-outline-danger" >Delete</button>
+                    </form>
+                </th>
+            </tr>
+            {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

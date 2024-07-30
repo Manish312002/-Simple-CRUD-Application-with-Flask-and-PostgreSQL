@@ -1,0 +1,23 @@
+
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container">
+    <form  method="post">
+        {{ form.hidden_tag() }}
+        <div class="notify d-flex justify-content-center align-item-center">
+            <div class="card text-center " style="width: 18rem;">
+                <div class="card-body">
+                <h5 class="card-title">Delete Alert!!!</h5>
+                <p class="card-text">Are you sure? </p>
+                <p class="card-text">Press "CONFIRM" to delete data </p>
+                <input type="hidden" name="id" value="{{ id }}"> 
+                {{ form.submit(class="btn btn-primary") }}
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
